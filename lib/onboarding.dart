@@ -1,3 +1,4 @@
+import 'package:classified/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -20,7 +21,8 @@ class Onboarding extends StatelessWidget {
              const Spacer(),
               FilledButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/login');
+                  Navigator.push(context,MaterialPageRoute(builder: (_)=> Login()));
+                   
                 },
                 style: FilledButton.styleFrom(
                   shape: RoundedRectangleBorder(

@@ -1,0 +1,1 @@
+enum FetchStatus{ initial, success, failure, defaultState}

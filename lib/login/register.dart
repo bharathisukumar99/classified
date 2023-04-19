@@ -1,10 +1,12 @@
+import 'package:classified/login/email_password.dart';
+import 'package:classified/login/login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import 'Register.dart';
+import 'models/login_methods.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
-
+class Register extends StatelessWidget {
+  const Register({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,10 +34,12 @@ class Login extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                'Log In',
+                'Register',
                 textScaleFactor: 3,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.w600,color: Theme.of(context).colorScheme.primary),
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Theme.of(context).colorScheme.primary),
               ),
               SizedBox(
                 height: 40,
@@ -43,12 +47,15 @@ class Login extends StatelessWidget {
               OutlinedButton.icon(
                 style: OutlinedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(color:Theme.of(context).colorScheme.primary,width: 12 ),
+                    side: BorderSide(
+                        color: Theme.of(context).colorScheme.primary,
+                        width: 12),
                     borderRadius: BorderRadius.circular(7),
                   ),
                 ),
                 onPressed: () {},
-                icon: Icon(Icons.face),
+                icon:
+                    SvgPicture.asset('assets/images/facebook.svg', height: 24),
                 label: Text('Continue with Facebook'),
               ),
               SizedBox(
@@ -60,8 +67,11 @@ class Login extends StatelessWidget {
                     borderRadius: BorderRadius.circular(7),
                   ),
                 ),
-                onPressed: () {},
-                icon: Icon(Icons.face),
+                onPressed: () async {
+                  await signInWithGoogle();
+                },
+                icon: SvgPicture.asset('assets/images/google.svg',
+                    color: Theme.of(context).colorScheme.primary, height: 24),
                 label: Text('Continue with Google'),
               ),
               SizedBox(
@@ -74,7 +84,7 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {},
-                icon: Icon(Icons.face),
+                icon: SvgPicture.asset('assets/images/apple.svg', height: 24),
                 label: Text('Continue with Apple'),
               ),
               SizedBox(
@@ -86,23 +96,27 @@ class Login extends StatelessWidget {
                     borderRadius: BorderRadius.circular(7),
                   ),
                 ),
-                onPressed: () {},
-                icon: Icon(Icons.face),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) =>  EmailPasswordPage()),
+                  );
+                },
+                icon: Icon(Icons.mail),
                 label: Text('Continue with Email'),
               ),
               SizedBox(
                 height: 10,
               ),
               TextButton(
-               
                 onPressed: () {
                   Navigator.push(
-    context,
-    MaterialPageRoute(builder: (_) => const Register()),
-  );
+                    context,
+                    MaterialPageRoute(builder: (_) => const Login()),
+                  );
                 },
                 child: const Text(
-                  "Don't have an account? Create one",
+                  "Already a User? Log In",
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
                   ),
