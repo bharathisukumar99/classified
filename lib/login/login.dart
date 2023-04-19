@@ -35,6 +35,9 @@ class Login extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              
+              SvgPicture.asset('assets/images/welcome.svg', height: MediaQuery.of(context).size.height/5),
+               
               Text(
                 'Log In',
                 textScaleFactor: 3,
@@ -107,9 +110,9 @@ class Login extends StatelessWidget {
                
                 onPressed: () {
                   Navigator.push(
-    context,
-    MaterialPageRoute(builder: (_) => const Register()),
-  );
+          context,
+          MaterialPageRoute(builder: (_) => const Register()),
+        );
                 },
                 child: const Text(
                   "Don't have an account? Create one",

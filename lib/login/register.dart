@@ -33,6 +33,7 @@ class Register extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              SvgPicture.asset('assets/images/welcome.svg', height: MediaQuery.of(context).size.height/5),
               Text(
                 'Register',
                 textScaleFactor: 3,

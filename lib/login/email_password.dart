@@ -115,10 +115,15 @@ class EmailPasswordPage extends StatelessWidget {
                     child: FilledButton(
                       onPressed: () {
                         FocusManager.instance.primaryFocus?.unfocus();
-                        arguments == 'R' ?
+                        if(username.text.isNotEmpty && password.text.isNotEmpty){
+arguments == 'R' ?
                         context.read<LoginBloc>().add(RegisterEvent(
                             username: username.text, password: password.text)) : context.read<LoginBloc>().add(LoginInitiateEvent(
                             username: username.text, password: password.text));
+                        }else{
+                          ScaffoldMessenger.of(context).showSnackBar(onError('Please Fill Email and Password'));
+                        }
+                        
                       },
                       style: FilledButton.styleFrom(
                         shape: RoundedRectangleBorder(
