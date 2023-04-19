@@ -24,25 +24,25 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Classified App',
-      theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: lightColorScheme,
-          fontFamily: 'Raleway'),
-      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
-      // initialRoute: '/',
-      // routes: {
-      //   '/': (context) => const Home(),
-      //   '/login': (context) => const Login(),
-      //   '/register': (context) => const Register(),
-      //   '/email': (context) => EmailPasswordPage(),
-      //   '/home': (context) => const MainPage(),
-      // },
-      home:BlocProvider(
-        create: (context) => LoginBloc(),
-        child: EmailPasswordPage(),
+    return BlocProvider(
+      create: (context) => LoginBloc(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Classified App',
+        theme: ThemeData(
+            useMaterial3: true,
+            colorScheme: lightColorScheme,
+            fontFamily: 'Raleway'),
+        darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const Home(),
+          '/login': (context) => const Login(),
+          '/register': (context) => const Register(),
+          '/email': (context) => EmailPasswordPage(),
+          '/home': (context) => const MainPage(),
+        },
+         
       ),
     );
   }

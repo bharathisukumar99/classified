@@ -13,3 +13,4 @@ class RegisterEvent extends LoginEvent {
     required this.password,
   });
 }
+class SignOut extends LoginEvent{}

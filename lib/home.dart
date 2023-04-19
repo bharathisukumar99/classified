@@ -1,4 +1,6 @@
+import 'package:classified/home/main_page.dart';
 import 'package:classified/onboarding.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,6 +11,9 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Onboarding();
+    if (FirebaseAuth.instance.currentUser != null) {
+      return MainPage();
+    }
+    return const Onboarding();
   }
 }

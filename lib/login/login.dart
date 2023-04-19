@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'Register.dart';
 
@@ -17,7 +18,9 @@ class Login extends StatelessWidget {
           automaticallyImplyLeading: false,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               icon: Icon(
                 Icons.close,
                 color: Colors.grey[350],
@@ -48,7 +51,7 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {},
-                icon: Icon(Icons.face),
+                icon: SvgPicture.asset('assets/images/facebook.svg', height: 24),
                 label: Text('Continue with Facebook'),
               ),
               SizedBox(
@@ -61,7 +64,8 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {},
-                icon: Icon(Icons.face),
+                icon: SvgPicture.asset('assets/images/google.svg',
+                    color: Theme.of(context).colorScheme.primary, height: 24),
                 label: Text('Continue with Google'),
               ),
               SizedBox(
@@ -74,7 +78,7 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {},
-                icon: Icon(Icons.face),
+                icon: SvgPicture.asset('assets/images/apple.svg', height: 24),
                 label: Text('Continue with Apple'),
               ),
               SizedBox(
@@ -86,8 +90,10 @@ class Login extends StatelessWidget {
                     borderRadius: BorderRadius.circular(7),
                   ),
                 ),
-                onPressed: () {},
-                icon: Icon(Icons.face),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/email');
+                },
+                icon: Icon(Icons.mail),
                 label: Text('Continue with Email'),
               ),
               SizedBox(

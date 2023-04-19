@@ -24,7 +24,9 @@ class EmailPasswordPage extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+               Navigator.pop(context);
+            },
             icon: Icon(
               Icons.close,
               color: Colors.grey[350],
@@ -64,7 +66,7 @@ class EmailPasswordPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SvgPicture.asset('assets/images/register.svg',
-                      height: MediaQuery.of(context).size.height / 3),
+                      height: MediaQuery.of(context).size.height / 4),
                   Text(
                     'Register',
                     textScaleFactor: 3,
@@ -110,6 +112,7 @@ class EmailPasswordPage extends StatelessWidget {
                     width: double.infinity,
                     child: FilledButton(
                       onPressed: () {
+                        FocusManager.instance.primaryFocus?.unfocus();
                         context.read<LoginBloc>().add(RegisterEvent(
                             username: username.text, password: password.text));
                       },

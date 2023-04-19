@@ -53,7 +53,9 @@ class Register extends StatelessWidget {
                     borderRadius: BorderRadius.circular(7),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 icon:
                     SvgPicture.asset('assets/images/facebook.svg', height: 24),
                 label: Text('Continue with Facebook'),
