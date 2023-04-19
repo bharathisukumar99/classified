@@ -18,14 +18,31 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           email: event.username,
           password: event.password,
         );
-         
-        print('uid ${credential.user!.uid}');
         emit(state.copyWith(status: FetchStatus.success, responseCode: 200));
       } on FirebaseAuthException catch (e) {
         emit(state.copyWith(status: FetchStatus.failure));
         if (e.code == 'weak-password') {
           emit(state.copyWith(responseCode: 400));
         } else if (e.code == 'email-already-in-use') {
+          emit(state.copyWith(responseCode: 401));
+        }
+      } catch (e) {
+        emit(state.copyWith(status: FetchStatus.failure, responseCode: 402));
+      }
+      emit(state.copyWith(status: FetchStatus.defaultState, responseCode: 0));
+    });
+    on<LoginInitiateEvent>((event, emit) async {
+      emit(state.copyWith(status: FetchStatus.initial));
+      try {
+       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+    email: event.username,
+    password: event.password);
+        emit(state.copyWith(status: FetchStatus.success, responseCode: 200));
+      } on FirebaseAuthException catch (e) {
+        emit(state.copyWith(status: FetchStatus.failure));
+        if (e.code == 'user-not-found') {
+          emit(state.copyWith(responseCode: 400));
+        } else if (e.code == 'wrong-password') {
           emit(state.copyWith(responseCode: 401));
         }
       } catch (e) {

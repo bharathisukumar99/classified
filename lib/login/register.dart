@@ -101,7 +101,7 @@ class Register extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) =>  EmailPasswordPage()),
+                    MaterialPageRoute(builder: (_) =>  EmailPasswordPage('R')),
                   );
                 },
                 icon: Icon(Icons.mail),

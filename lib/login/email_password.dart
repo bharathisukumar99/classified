@@ -9,7 +9,8 @@ import '../enums.dart';
 import '../home/main_page.dart';
 
 class EmailPasswordPage extends StatelessWidget {
-  EmailPasswordPage({super.key});
+  String arguments;
+  EmailPasswordPage(this.arguments);
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
   @override
@@ -32,6 +33,7 @@ class EmailPasswordPage extends StatelessWidget {
               color: Colors.grey[350],
             ),
           ),
+          Text(arguments)
         ],
       ),
       body: BlocConsumer<LoginBloc, LoginState>(
@@ -46,15 +48,15 @@ class EmailPasswordPage extends StatelessWidget {
                         }
                         if (state.responseCode == 400) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                              onError('The password provided is too weak.'));
+                              onError(arguments == 'R' ? 'The password provided is too weak.' : "No user found for that email."));
                         }
                         if (state.responseCode == 402) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                              onError('Something went wrong, Try again Later!'));
+                              onError(arguments == 'R' ? 'Something went wrong, Try again Later!' : 'Invalid Login'));
                         }
                         if (state.responseCode == 401) {
                           ScaffoldMessenger.of(context).showSnackBar(onError(
-                              'The account already exists for that email.'));
+                              arguments == 'R' ? 'The account already exists for that email.' :"Wrong password provided for that user."));
                         }
         },
         builder: (context, state) {
@@ -68,7 +70,7 @@ class EmailPasswordPage extends StatelessWidget {
                   SvgPicture.asset('assets/images/register.svg',
                       height: MediaQuery.of(context).size.height / 4),
                   Text(
-                    'Register',
+                    arguments == 'L' ? 'Login' :'Register' ,
                     textScaleFactor: 3,
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -113,7 +115,9 @@ class EmailPasswordPage extends StatelessWidget {
                     child: FilledButton(
                       onPressed: () {
                         FocusManager.instance.primaryFocus?.unfocus();
+                        arguments == 'R' ?
                         context.read<LoginBloc>().add(RegisterEvent(
+                            username: username.text, password: password.text)) : context.read<LoginBloc>().add(LoginInitiateEvent(
                             username: username.text, password: password.text));
                       },
                       style: FilledButton.styleFrom(
@@ -121,8 +125,8 @@ class EmailPasswordPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(7),
                         ),
                       ),
-                      child: const Text(
-                        "Register",
+                      child: Text(
+                        arguments == 'L' ? 'Login' :'Register' ,
                         textScaleFactor: 1.5,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,

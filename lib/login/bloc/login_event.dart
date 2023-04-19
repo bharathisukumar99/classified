@@ -13,4 +13,12 @@ class RegisterEvent extends LoginEvent {
     required this.password,
   });
 }
+class LoginInitiateEvent extends LoginEvent {
+    String username;
+    String password;
+  LoginInitiateEvent({
+    required this.username,
+    required this.password,
+  });
+}
 class SignOut extends LoginEvent{}

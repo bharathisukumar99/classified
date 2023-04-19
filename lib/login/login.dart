@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'Register.dart';
+import 'email_password.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -91,7 +92,10 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/email');
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) =>  EmailPasswordPage('L')),
+                  );
                 },
                 icon: Icon(Icons.mail),
                 label: Text('Continue with Email'),
