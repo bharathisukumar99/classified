@@ -26,6 +26,7 @@ class EmailPasswordPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
+               FocusManager.instance.primaryFocus?.unfocus();
                Navigator.pop(context);
             },
             icon: Icon(
@@ -33,7 +34,6 @@ class EmailPasswordPage extends StatelessWidget {
               color: Colors.grey[350],
             ),
           ),
-          Text(arguments)
         ],
       ),
       body: BlocConsumer<LoginBloc, LoginState>(

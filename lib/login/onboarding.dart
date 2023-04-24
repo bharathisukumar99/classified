@@ -21,7 +21,7 @@ class Onboarding extends StatelessWidget {
              const Spacer(),
               FilledButton(
                 onPressed: () {
-                  Navigator.push(context,MaterialPageRoute(builder: (_)=> Login()));
+                  Navigator.pushReplacement(context,MaterialPageRoute(builder: (_)=> Login()));
                    
                 },
                 style: FilledButton.styleFrom(

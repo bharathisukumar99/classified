@@ -4,19 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../constant_widgets.dart';
+import 'bottom_navigation.dart';
+
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+    
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
-         if(state.responseCode==403){
+        if (state.responseCode == 403) {
           Navigator.popUntil(context, ModalRoute.withName('/'));
-         }
+        }
       },
       child: Scaffold(
+        appBar: AppBar(
+          title: Image.asset(
+            'assets/images/logo.png',
+            height: 60,
+          ),
+          centerTitle: true,
+        ),
         body: Container(
           padding: EdgeInsets.all(20),
           child: Column(
@@ -39,7 +49,7 @@ class MainPage extends StatelessWidget {
                       children: [
                         SvgPicture.asset(
                           'assets/images/${items[index].assets}.svg',
-                          height: height / 12,
+                          height: height(context) / 12,
                         ),
                         Flexible(
                           child: Text(
@@ -59,12 +69,15 @@ class MainPage extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: TextButton(
-          onPressed: () {
-            context.read<LoginBloc>().add(SignOut());
-          },
-          child: Text('Sign out'),
-        ),
+        floatingActionButton: FloatingActionButton.small(
+            onPressed: () {
+               Navigator.pushNamed(context, '/post');
+            },backgroundColor: Theme.of(context).colorScheme.tertiary,foregroundColor: Theme.of(context).colorScheme.onTertiary, child:const Icon(Icons.add),
+          
+            ),
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.miniCenterDocked,
+        bottomNavigationBar: BottomNavigationBarItems(),
       ),
     );
   }

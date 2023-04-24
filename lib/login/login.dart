@@ -20,7 +20,7 @@ class Login extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                //Navigator.pop(context);
               },
               icon: Icon(
                 Icons.close,
@@ -109,7 +109,7 @@ class Login extends StatelessWidget {
               TextButton(
                
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (_) => const Register()),
         );

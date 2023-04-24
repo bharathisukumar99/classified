@@ -8,4 +8,4 @@ class Items {
   });
 }
 
-List<Items> items = [Items(assets: 'apartment', name: 'Apartments\nfor Rent'),Items(assets: 'sale', name: 'Property\nfor Sale'),Items(assets: 'food_discount', name: 'Discount')];
+List<Items> items = [Items(assets: 'apartment', name: 'Rent'),Items(assets: 'sale', name: 'Sale'),Items(assets: 'food_discount', name: 'Discount')];

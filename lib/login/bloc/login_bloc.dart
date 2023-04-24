@@ -39,6 +39,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     password: event.password);
         emit(state.copyWith(status: FetchStatus.success, responseCode: 200));
       } on FirebaseAuthException catch (e) {
+        print(e.code);
         emit(state.copyWith(status: FetchStatus.failure));
         if (e.code == 'user-not-found') {
           emit(state.copyWith(responseCode: 400));

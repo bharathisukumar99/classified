@@ -1,9 +1,11 @@
+import 'package:classified/advertisement/post_ad_page.dart';
 import 'package:classified/login/Register.dart';
 import 'package:classified/login/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'advertisement/bloc/post_bloc.dart';
 import 'color_schemes.g.dart';
 import 'firebase_options.dart';
 import 'home.dart';
@@ -24,8 +26,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LoginBloc(),
+        ),
+        BlocProvider(
+          create: (context) => PostBloc(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Classified App',
@@ -41,8 +50,8 @@ class MainApp extends StatelessWidget {
           '/register': (context) => const Register(),
           '/email': (context) => EmailPasswordPage('N'),
           '/home': (context) => const MainPage(),
+          '/post': (context) => const PostAdPage(),
         },
-         
       ),
     );
   }
