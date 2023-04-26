@@ -2,6 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 
+import '../../enums.dart';
+
 part 'post_event.dart';
 part 'post_state.dart';
 
@@ -30,6 +32,12 @@ class PostBloc extends Bloc<PostEvent, PostState> {
           emit(state.copyWith(imageList: state.imageList..add(photo)));
         }
       }
+    });
+    on<SellerSelectionEvent>((event, emit) {
+      emit(state.copyWith(seller: event.seller));
+    });
+     on<SellerTypeSelectionEvent>((event, emit) {
+      emit(state.copyWith(saletype: event.seller));
     });
   }
 }

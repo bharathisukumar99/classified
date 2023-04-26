@@ -6,11 +6,15 @@ class PostState {
   String type;
   String title;
   List<XFile> imageList;
+  Seller seller;
+  SaleType saletype;
   PostState({
     this.location = '',
     this.type = '',
     this.title = '',
     required this.imageList,
+    this.seller = Seller.agent,
+    this.saletype = SaleType.resident,
   });
 
   PostState copyWith({
@@ -18,12 +22,16 @@ class PostState {
     String? type,
     String? title,
     List<XFile>? imageList,
+    Seller? seller,
+    SaleType? saletype,
   }) {
     return PostState(
       location: location ?? this.location,
       type: type ?? this.type,
       title: title ?? this.title,
       imageList: imageList ?? this.imageList,
+      seller: seller ?? this.seller,
+      saletype: saletype ?? this.saletype,
     );
   }
 }

@@ -32,3 +32,16 @@ class UploadImageEvent extends PostEvent {
     required this.type,
   });
 }
+
+class SellerSelectionEvent extends PostEvent {
+  Seller seller;
+  SellerSelectionEvent({
+    required this.seller,
+  });
+}
+class SellerTypeSelectionEvent extends PostEvent {
+  SaleType seller;
+  SellerTypeSelectionEvent({
+    required this.seller,
+  });
+}

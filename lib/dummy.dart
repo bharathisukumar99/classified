@@ -18,3 +18,19 @@ class MyWidget extends StatelessWidget {
   //     return widget.steps[index].isActive ? colorScheme.secondary : colorScheme.background;
   //   }
   // }
+
+  // Container(
+                  //   decoration: BoxDecoration(
+                  //       border: Border.all(color: Colors.grey.shade300),
+                  //       borderRadius: BorderRadius.circular(7)),
+                  //   padding: EdgeInsets.all(8),
+                  //   child: TextFormField(
+                  //     decoration: InputDecoration(
+                  //       contentPadding: EdgeInsets.all(0),
+                  //       border: InputBorder.none,
+                  //       hintText: 'Sale for',
+                  //       isDense: true,
+                  //       label: Text('Sale for'),
+                  //     ),
+                  //   ),
+                  // ),

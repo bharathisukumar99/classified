@@ -21,10 +21,8 @@ class MainPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Image.asset(
-            'assets/images/logo.png',
-            height: 60,
-          ),
+          title: SvgPicture.asset('assets/images/logo.svg',height: 50,),
+          
           centerTitle: true,
         ),
         body: Container(

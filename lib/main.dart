@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'advertisement/bloc/post_bloc.dart';
+import 'advertisement/field_information.dart';
 import 'color_schemes.g.dart';
 import 'firebase_options.dart';
 import 'home.dart';
@@ -51,6 +52,7 @@ class MainApp extends StatelessWidget {
           '/email': (context) => EmailPasswordPage('N'),
           '/home': (context) => const MainPage(),
           '/post': (context) => const PostAdPage(),
+          '/field': (context) => const FieldInformation(),
         },
       ),
     );

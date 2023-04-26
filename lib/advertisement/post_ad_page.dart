@@ -171,6 +171,7 @@ class _PostAdPageState extends State<PostAdPage> {
                       child: Column(
                         children: [
                           TextField(
+                            style: const TextStyle(fontWeight: FontWeight.w700,decoration: TextDecoration.none,letterSpacing: 1.2,fontSize: 20), 
                             maxLines: 2,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -179,6 +180,7 @@ class _PostAdPageState extends State<PostAdPage> {
                               isDense: true,
                               contentPadding: EdgeInsets.all(10),
                               hintText: 'Enter Title',
+                              hintStyle: TextStyle(fontWeight: FontWeight.normal)
                             ),
                             onChanged: (val) {
                               context
@@ -201,12 +203,15 @@ class _PostAdPageState extends State<PostAdPage> {
                       style: TextStyle(fontWeight: FontWeight.w600),
                       textScaleFactor: 1.2,
                     ),
+                    subtitle: Visibility
+                    (
+                      visible: _index == 3,
+                      child: const Text('Please upload atleast three Images')),
                     content: Container(
                       alignment: Alignment.centerLeft,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Please upload atleast three Images'),
                           Row(
                             children: [
                               FloatingActionButton(
@@ -249,11 +254,13 @@ class _PostAdPageState extends State<PostAdPage> {
                             shrinkWrap: true,
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
+                                    crossAxisCount: 3),
                             itemBuilder: (context, index) {
                               return Container(
                                 margin: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(7)),
                                 child: Image.file(
+                                  fit: BoxFit.fill,
                                   File(state.imageList[index].path),
                                 ),
                               );
@@ -280,10 +287,12 @@ class _PostAdPageState extends State<PostAdPage> {
                     child: const Text(
                       'Next',
                       textAlign: TextAlign.center,
-                      textScaleFactor: 2,
-                      style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,letterSpacing: 1.5),
+                      textScaleFactor: 1.5,
+                      style: TextStyle(color: Colors.white,letterSpacing: 1.5),
                     )),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, '/field');
+                },
               )),
         );
       },
