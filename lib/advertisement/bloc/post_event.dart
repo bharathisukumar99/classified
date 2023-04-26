@@ -45,3 +45,10 @@ class SellerTypeSelectionEvent extends PostEvent {
     required this.seller,
   });
 }
+
+class PostData extends PostEvent {
+  PostModel postModel;
+  PostData({
+    required this.postModel,
+  });
+}

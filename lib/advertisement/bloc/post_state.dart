@@ -8,13 +8,15 @@ class PostState {
   List<XFile> imageList;
   Seller seller;
   SaleType saletype;
+  FetchStatus status;
   PostState({
     this.location = '',
     this.type = '',
     this.title = '',
     required this.imageList,
-    this.seller = Seller.agent,
+    this.seller = Seller.landlord,
     this.saletype = SaleType.resident,
+     this.status = FetchStatus.defaultState,
   });
 
   PostState copyWith({
@@ -24,6 +26,7 @@ class PostState {
     List<XFile>? imageList,
     Seller? seller,
     SaleType? saletype,
+    FetchStatus? status,
   }) {
     return PostState(
       location: location ?? this.location,
@@ -32,6 +35,7 @@ class PostState {
       imageList: imageList ?? this.imageList,
       seller: seller ?? this.seller,
       saletype: saletype ?? this.saletype,
+      status: status ?? this.status,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:classified/advertisement/post_ad_page.dart';
 import 'package:classified/login/Register.dart';
 import 'package:classified/login/login.dart';
+import 'package:classified/login/onboarding.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,7 @@ import 'advertisement/field_information.dart';
 import 'color_schemes.g.dart';
 import 'firebase_options.dart';
 import 'home.dart';
+import 'home/bloc/home_bloc.dart';
 import 'home/main_page.dart';
 import 'login/bloc/login_bloc.dart';
 import 'login/email_password.dart';
@@ -35,6 +37,9 @@ class MainApp extends StatelessWidget {
         BlocProvider(
           create: (context) => PostBloc(),
         ),
+        BlocProvider(
+          create: (context) => HomeBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -47,6 +52,7 @@ class MainApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const Home(),
+          '/board':(context) => const Onboarding(),
           '/login': (context) => const Login(),
           '/register': (context) => const Register(),
           '/email': (context) => EmailPasswordPage('N'),

@@ -1,10 +1,9 @@
 import 'dart:io';
 
 import 'package:classified/constant_widgets.dart';
-import 'package:classified/custom_widgets/custom_stepper.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -171,17 +170,21 @@ class _PostAdPageState extends State<PostAdPage> {
                       child: Column(
                         children: [
                           TextField(
-                            style: const TextStyle(fontWeight: FontWeight.w700,decoration: TextDecoration.none,letterSpacing: 1.2,fontSize: 20), 
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1.2,
+                                fontSize: 20),
                             maxLines: 2,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.grey.shade100)),
-                              isDense: true,
-                              contentPadding: EdgeInsets.all(10),
-                              hintText: 'Enter Title',
-                              hintStyle: TextStyle(fontWeight: FontWeight.normal)
-                            ),
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.grey.shade100)),
+                                isDense: true,
+                                contentPadding: EdgeInsets.all(10),
+                                hintText: 'Enter Title',
+                                hintStyle:
+                                    TextStyle(fontWeight: FontWeight.normal)),
                             onChanged: (val) {
                               context
                                   .read<PostBloc>()
@@ -203,10 +206,10 @@ class _PostAdPageState extends State<PostAdPage> {
                       style: TextStyle(fontWeight: FontWeight.w600),
                       textScaleFactor: 1.2,
                     ),
-                    subtitle: Visibility
-                    (
-                      visible: _index == 3,
-                      child: const Text('Please upload atleast three Images')),
+                    subtitle: Visibility(
+                        visible: _index == 3,
+                        child:
+                            const Text('Please upload atleast three Images')),
                     content: Container(
                       alignment: Alignment.centerLeft,
                       child: Column(
@@ -250,7 +253,7 @@ class _PostAdPageState extends State<PostAdPage> {
                             ],
                           ),
                           GridView.builder(
-                            physics:const NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
@@ -258,7 +261,8 @@ class _PostAdPageState extends State<PostAdPage> {
                             itemBuilder: (context, index) {
                               return Container(
                                 margin: const EdgeInsets.all(4),
-                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(7)),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(7)),
                                 child: Image.file(
                                   fit: BoxFit.fill,
                                   File(state.imageList[index].path),
@@ -288,7 +292,7 @@ class _PostAdPageState extends State<PostAdPage> {
                       'Next',
                       textAlign: TextAlign.center,
                       textScaleFactor: 1.5,
-                      style: TextStyle(color: Colors.white,letterSpacing: 1.5),
+                      style: TextStyle(color: Colors.white, letterSpacing: 1.5),
                     )),
                 onTap: () {
                   Navigator.pushNamed(context, '/field');

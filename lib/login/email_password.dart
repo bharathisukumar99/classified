@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../enums.dart';
+import '../home.dart';
+import '../home/home.dart';
 import '../home/main_page.dart';
 
 class EmailPasswordPage extends StatelessWidget {
@@ -41,7 +43,7 @@ class EmailPasswordPage extends StatelessWidget {
           if (state.responseCode == 200) {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(onSuccess('Successfully Register'));
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (_) => const MainPage()),
                           );
